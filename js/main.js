@@ -1,3 +1,5 @@
+const modal = new bootstrap.Modal(document.getElementById('decrypted-token'), {});
+
 const decrypt = async (e) => {
     e.preventDefault();
 
@@ -12,15 +14,7 @@ const decrypt = async (e) => {
 
     document.getElementById('modal-body').innerHTML = decrypted;
 
-    const modal = new bootstrap.Modal(document.getElementById('decrypted-token'), {});
     modal.toggle();
 };
 
-const closeModal = async (e) => {
-    const modal = new bootstrap.Modal(document.getElementById('decrypted-token'), {});
-    modal.hide();
-};
-
 document.getElementById('form').addEventListener('submit', decrypt, true);
-
-document.getElementById('modal-close').addEventListener('click', closeModal);
