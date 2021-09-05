@@ -3,8 +3,8 @@ const modal = new bootstrap.Modal(document.getElementById('decrypted-token'), {}
 const formatToken = async (e) => {
     const value = e.target.value;
 
-    if (value && value.indexOf('\n\n') < 0) {
-        e.target.value = value.replace('\n', '\n\n');
+    if (value) {
+        e.target.value = value.trim().replaceAll('\n\n', '\n').replace('\n', '\n\n');
     }
 }
 
