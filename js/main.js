@@ -14,13 +14,26 @@ const decrypt = async (e) => {
     const encryptedMessage = await openpgp.readMessage({
         armoredMessage: document.getElementById('form-sas-token').value
     });
-    const { data: decrypted } = await openpgp.decrypt({
+    var { data: decrypted } = await openpgp.decrypt({
         message: encryptedMessage,
-        passwords: [document.getElementById('form-access-key').value],
+        passwords: [document.getElementById('form-access-key').value.trim()],
         format: 'armored'
     });
+    decrypted = decrypted.trim();
 
-    document.getElementById('modal-body').innerHTML = decrypted;
+    const dataUrl = document.getElementById('form-data-url').value.trim();
+
+    document.getElementById('modal-body').innerHTML =
+`<pre><code># Download the snapshot with the below command,
+az storage copy \\
+    --source "${dataUrl}" \\
+    --destination . \\
+    --recursive \\
+    --sas-token "${decrypted}"
+
+# Parameters for QBS (if you are migrating to QBS)
+Extract Data URL = ${dataUrl}
+SAS Token        = ${decrypted}</code></pre>`;
     modal.toggle();
 };
 

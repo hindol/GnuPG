@@ -15,6 +15,11 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-9 col-lg-6">
+          <h1>GnuPG Utility</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-9 col-lg-6">
           <form id="form">
             <div class="mb-3">
               <label for="form-sas-token" class="form-label">Encrypted SAS Token</label>
@@ -23,16 +28,22 @@
             <div class="mb-3">
               <label for="form-access-key" class="form-label">Access Key 1</label>
               <input type="password" class="form-control" id="form-access-key">
-              <div id="emailHelp" class="form-text">The access key is *not* being sent over the network.</div>
+              <div id="emailHelp" class="form-text">The access key 1 is <strong>not</strong> being sent over the network.</div>
             </div>
-            <button id="form-submit" type="submit" class="btn btn-primary">Decrypt</button>
+            <div class="mb-3">
+              <label for="form-data-url" class="form-label">Extract Data URL</label>
+              <input type="text" class="form-control" id="form-data-url">
+            </div>
+            <div class="d-grid gap-2">
+              <button id="form-submit" type="submit" class="btn btn-primary">Decrypt</button>
+            </div>
           </form>
         </div>
       </div>
     </div>
 
     <div class="modal fade" id="decrypted-token" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modal-label">Decrypted SAS Token</h5>
